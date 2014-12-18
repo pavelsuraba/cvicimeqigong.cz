@@ -1,0 +1,163 @@
+/* ==========================================================================
+   Navigation
+   ========================================================================== */
+
+/*
+Source code example:
+
+    <div class="menu__btn__container">
+        <a class="menu__btn" href="#"><span class="menu__btn__text">MENU</span>
+        <span class="menu__btn__line menu__btn__line1"></span>
+        <span class="menu__btn__line menu__btn__line2"></span>
+        <span class="menu__btn__line menu__btn__line3"></span>
+        </a>
+    </div>
+
+    <nav class="menu">
+        <ul class="menu__list">
+            <li class="menu__item"><a href="#">Co je Qi gong?</a></li>
+            <li class="menu__item"><a href="#">Termíny</a></li>
+            <li class="menu__item"><a href="#">Kontakt</a></li>
+        </ul>
+    </nav>
+*/
+
+/* Menu button variables */
+$icon_height: 22px;
+$line_width: 40px;
+$line_height: 4px;
+
+.menu__btn__container {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+}
+
+.menu__btn {
+    position: relative;
+    display: block;
+    width: $line_width;
+    height: $icon_height;
+    z-index: 3;
+
+    @include bp(65em) { //1040px
+        display: none;
+    }
+}
+
+.menu__btn__text {
+    position: relative;
+    left: -4.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: $nav-btn-text-off;
+
+    @include bp(29em) { //460px
+        line-height: 1.3;
+    }
+
+    @include bp(40em) { //640px
+        line-height: 1;
+    }
+
+    @include bp(65em) { //1040px
+        display: none;
+    }
+}
+
+.menu__btn__line {
+    display: block;
+    position: absolute;
+    width: $line_width;
+    height: $line_height;
+    background: $nav-btn-line-off;
+    border-radius: ($line_height / 2); 
+    transition: all 300ms linear 200ms;  
+}
+
+.menu__btn.do-active {
+
+    .menu__btn__line1 {
+        transform: translateY(11px) rotate(45deg);
+    }
+
+    .menu__btn__line2 {
+        opacity: 0;
+    }     
+
+    .menu__btn__line3 {
+        transform: translateY(-11px) rotate(-45deg);;
+    }    
+}
+
+.menu__btn__line1 {
+    top: 0;
+}
+
+.menu__btn__line2 {
+    top: 50%;
+}
+
+.menu__btn__line3 {
+    top: 100%;
+}
+
+.menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    z-index: 2;
+    max-height: 0;
+    background: $nav-list-bgr;
+    transition: all 400ms ease-in-out;
+
+    @include bp(65em) { //640px
+        position: static;
+        width: auto;
+        float: right;
+        max-height: none;
+        background: transparent;
+    }
+}
+
+.menu.do-active {
+    padding-top: 4rem;
+    max-height: 20rem;
+    box-shadow: 0px 1px 5px 0px rgba(50, 50, 50, 0.75);
+}
+
+.menu__item {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 0.6rem 0;
+    border-bottom: 2px solid $nav-list-border;
+
+    a {
+        display: block;
+        color: $header-font-color;
+    }
+
+    @include bp(65em) { //640px
+        display: inline-block;
+        border-bottom: none;
+        padding: 0;
+        margin: 0.6rem 0 0 2.5rem;
+    }
+
+    &:hover {
+        border-bottom: 3px solid $nav-list-border;
+    }
+}
+
+.menu__item:last-of-type {
+    border-bottom: none; 
+
+    @include bp(65em) { //640px
+        &:hover {
+            border-bottom: 3px solid $nav-list-border;
+        }
+    }   
+}

@@ -1,0 +1,79 @@
+/* ==========================================================================
+   Grid
+   ========================================================================== */
+
+%base-container {
+    max-width: 77.5rem; // 1240px
+    margin: 0 auto;
+}
+
+// basic container
+.container {
+    @extend %base-container;
+    padding: 0 1.5rem;
+}
+
+// grid => padding is divided between container and column
+.grid {
+    @extend %base-container;
+    padding: 0 0.75rem;
+}
+
+.grid:after {
+    content: "";
+    display: table;
+    clear: both;   
+}
+
+.grid__contact {
+    max-width: 50rem; // 800px
+}
+
+%grid__col {
+    padding: 0 0.75rem;
+}
+
+.grid__col--text {
+
+    @extend %grid__col;
+
+    @include bp(35em) { //460px
+        float: left;
+        width: 50%;
+    }
+
+    @include bp(83em) { //1328px
+        width: 33.33%;
+    }
+}
+
+.grid__col--contact {
+
+    @extend %grid__col;
+
+    text-align: center;
+
+    @include bp(35em) { //460px
+        float: left;
+        width: 50%;
+    }
+}
+
+.grid__col--picture {
+
+    @extend %grid__col;
+
+    @include bp(35em) { //460px
+        float: left;
+        width: 50%;
+    }
+
+    @include bp(65em) { //1040px
+        width: 33.33%;
+    }
+
+    img {
+        width: 100%;
+        height: auto;        
+    }
+}

@@ -1,0 +1,93 @@
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+
+   @keyframes arrowAnimate {
+    0% {
+        transform: translateY(0);
+    }
+    25% {
+        transform: translateY(7px);
+    }
+    50% {
+        transform: translateY(12px);
+    }
+    75% {
+        transform: translateY(7px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@include bp(67em) { //1072px
+
+/**
+ * Button arrow-down scroll
+ */
+    %btnScroll {
+        border-radius: 50%;
+        background: transparent;
+    }
+
+    .btnScroll--header {
+
+        @extend %btnScroll;
+
+        position: absolute;
+        width: 80px;
+        height: 80px;
+        left: 50%;
+        bottom: 40px;
+        margin-left: -40px;
+        border: 2px solid $button-arrow-color;
+    }
+
+    .btnScroll--footer {
+        
+        @extend %btnScroll;
+
+        display: none;
+        position: fixed;
+        width: 50px;
+        height: 50px;
+        left: 93%;
+        bottom: 40px;
+        border: 2px solid $primary-Color;
+    }
+
+    .btnScroll--footer.js-show {
+        display: block;
+    }
+
+    %btnScroll__arrow {
+        position: relative;
+        display: inline-block;    
+    }
+
+    .btnScroll__arrow--down {
+
+        @extend %btnScroll__arrow;
+
+        box-shadow: 3px -3px 0 1px $button-arrow-color inset;
+        top: 10px;
+        left: 18px;
+        padding: 20px;
+        transform: rotate(-45deg);
+    }
+
+    .btnScroll__arrow--up {
+
+        @extend %btnScroll__arrow;
+
+        box-shadow: 3px -3px 0 1px $primary-Color inset;
+        top: 15px;
+        left: 10px;
+        padding: 13px;
+        transform: rotate(135deg);    
+    }
+
+    .arrow-animate {
+        animation: arrowAnimate .8s 10 linear;
+    }
+}

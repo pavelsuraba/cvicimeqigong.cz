@@ -1,0 +1,36 @@
+/* ==========================================================================
+   Content
+   ========================================================================== */
+
+/*
+Source code example:
+
+    <div class="container">
+        <div class="content">
+            <h2></h2>
+            <h3></h3>
+            <p></p>
+        </div>
+    </div>
+*/
+
+.content {
+    margin-bottom: 3rem;
+
+    @include bp(65em) { //1040px
+        margin-bottom: 6rem;
+    }
+}
+
+.content__heading {
+    @include bp(29em) { //460px
+        max-width: 29rem;
+        margin: 0 auto;
+        margin-bottom: 3rem;
+    }
+
+    h3 {
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+}

@@ -1,0 +1,58 @@
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+* , *:before , *:after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+::selection {
+    background: $selection-color;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, picture {
+  display: block;
+}
+
+html {
+    font-family: 'Fira', sans-serif;
+    font-size: 87.5%;
+    line-height: 1.5;
+    font-weight: 300;
+    color: $primary-font-color;
+    text-rendering: optimizeLegibility;
+    z-index: 1;
+    height: 100%;
+
+    @include bp(29em) { //460px
+        font-size: 100%;  
+    }
+
+    @include bp(53em) { //848px
+        font-size: 125%;  
+    }
+}
+
+body {
+    background-color: $body-bg-color;
+    height: 100%;
+}
+
+a {
+    color: $primary-font-color;
+    text-decoration: none;
+    
+}
+
+li {
+    list-style: none;
+}
+
+p {
+    margin-bottom: 1rem;
+}
