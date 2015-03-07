@@ -1,15 +1,50 @@
 var App = (function($) {
     "use strict";
 
+    function isHeightMore(height) {
+        if(document.documentElement.clientHeight > height) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function isWidthLess(width) {
+        if(document.documentElement.clientWidth < width) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function isWidthMore(width) {
+        if(document.documentElement.clientWidth > width) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
     function slideNav() {
 
         var button = $(".menu__btn"),
-            menu   = $(".menu");
+            menu   = $(".navigation"),
+            item   = $(".navigation__item a");
 
         button.on("click", function(e) {
             e.preventDefault();
-            menu.toggleClass("do-active");
-            button.toggleClass("do-active");
+            menu.toggleClass("js-active");
+            button.toggleClass("js-active");
+        });
+
+        item.on("click", function(e) {
+
+            if(isWidthLess(1023)) {
+                e.preventDefault();
+                menu.toggleClass("js-active");
+                button.toggleClass("js-active");
+            }
         });
     }
 
@@ -62,29 +97,48 @@ var App = (function($) {
         });
     }
 
-    function delayAnim() {
-        var animH2 = document.getElementById("js-slide1"),
-            animH1 = document.getElementById("js-slide2");
+    function slideText() {
+        var text   = $(".section__slide"),
+            button = $(".button--more");
 
-        animH2.style.opacity = "0";
-        animH1.style.opacity = "0";
+        button.on("click", function() {
+            text.toggleClass("section__slide--expand");
 
-        setTimeout(function() {
-            animH2.setAttribute("class", "slide1");
-            animH2.style.opacity = "1";
-        }, 500);
+                if(text.hasClass("section__slide--expand")) {
 
-        setTimeout(function() {
-            animH1.setAttribute("class", "slide2");
-            animH1.style.opacity = "1";
-        }, 800);
+                    setTimeout(function() {
+                        button.text("Méně");
+                    }, 1300);
+    
+                } else {
+
+                    setTimeout(function() {
+                        button.text("Více");
+                    }, 1500);
+                }
+        });
+    }
+
+        /* Windows Phone 8 viewport issue */
+    function ieViewport() {
+        if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+            var msViewportStyle = document.createElement("style");
+            msViewportStyle.appendChild(
+                document.createTextNode(
+                    "@-ms-viewport{width:auto!important}"
+                )
+            );
+            document.getElementsByTagName("head")[0].
+                appendChild(msViewportStyle);
+        }
     }
 
     return {
         slideNav: slideNav,
         arrowScroll: arrowScroll,
         smoothScroll: smoothScroll,
-        delayAnim: delayAnim
+        ieViewport: ieViewport,
+        slideText: slideText
     };
 
 })(jQuery);
@@ -92,4 +146,5 @@ var App = (function($) {
 App.slideNav();
 App.arrowScroll();
 App.smoothScroll();
-App.delayAnim();
+App.ieViewport();
+App.slideText();

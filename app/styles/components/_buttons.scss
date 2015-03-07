@@ -1,93 +1,118 @@
-/* ==========================================================================
-   Buttons
-   ========================================================================== */
+/*==========================================================================
+  Buttons
+  ========================================================================== */
 
-   @keyframes arrowAnimate {
-    0% {
-        transform: translateY(0);
-    }
-    25% {
-        transform: translateY(7px);
-    }
-    50% {
-        transform: translateY(12px);
-    }
-    75% {
-        transform: translateY(7px);
-    }
-    100% {
-        transform: translateY(0);
-    }
+%btn {
+  height: 3rem;
+  display: block;
+  font-size: 1rem;
+  background: $button-bg;
+  color: $button-color;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  border-radius: 5px;
+
+  &:hover {
+    background: $button-bg-hover;
+  }
 }
 
-@include bp(67em) { //1072px
+.button--more {
 
-/**
- * Button arrow-down scroll
- */
-    %btnScroll {
-        border-radius: 50%;
-        background: transparent;
-    }
+  @extend %btn;
 
-    .btnScroll--header {
+  width: 180px;
+  margin: 0 auto;
+  margin-bottom: 3rem;
+}
 
-        @extend %btnScroll;
+%btnScroll {
+  border-radius: 50%;
+  background: transparent;
+  transform: translateZ(0);
+}
 
-        position: absolute;
-        width: 80px;
-        height: 80px;
-        left: 50%;
-        bottom: 40px;
-        margin-left: -40px;
-        border: 2px solid $button-arrow-color;
-    }
+.btnScroll--header {
 
-    .btnScroll--footer {
-        
-        @extend %btnScroll;
+  @extend %btnScroll;
 
-        display: none;
-        position: fixed;
-        width: 50px;
-        height: 50px;
-        left: 93%;
-        bottom: 40px;
-        border: 2px solid $primary-Color;
-    }
+  position: absolute;
+  display: none;
+  width: 80px;
+  height: 80px;
+  left: 50%;
+  bottom: 40px;
+  margin-left: -40px;
+  border: 2px solid $button-arrow-color;
 
-    .btnScroll--footer.js-show {
-        display: block;
-    }
+  @include bp(83em) {
+    display: block;
+  }
+}
 
-    %btnScroll__arrow {
-        position: relative;
-        display: inline-block;    
-    }
+.btnScroll--footer {
+    
+  @extend %btnScroll;
 
-    .btnScroll__arrow--down {
+  display: none;
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  right: 15px;
+  bottom: 15px;
+  border: 2px solid $primary-Color;
+}
 
-        @extend %btnScroll__arrow;
+.btnScroll--footer.js-show {
+  display: block;
+}
 
-        box-shadow: 3px -3px 0 1px $button-arrow-color inset;
-        top: 10px;
-        left: 18px;
-        padding: 20px;
-        transform: rotate(-45deg);
-    }
+%btnScroll__arrow {
+  position: relative;
+  display: inline-block;    
+}
 
-    .btnScroll__arrow--up {
+.btnScroll__arrow--down {
 
-        @extend %btnScroll__arrow;
+  @extend %btnScroll__arrow;
 
-        box-shadow: 3px -3px 0 1px $primary-Color inset;
-        top: 15px;
-        left: 10px;
-        padding: 13px;
-        transform: rotate(135deg);    
-    }
+  box-shadow: 3px -3px 0 1px $button-arrow-color inset;
+  top: 10px;
+  left: 18px;
+  padding: 20px;
+  transform: rotate(-45deg);
+}
 
-    .arrow-animate {
-        animation: arrowAnimate .8s 10 linear;
-    }
+.btnScroll__arrow--up {
+
+  @extend %btnScroll__arrow;
+
+  box-shadow: 3px -3px 0 1px $primary-Color inset;
+  top: 15px;
+  left: 10px;
+  padding: 13px;
+  transform: rotate(135deg);    
+}
+
+@keyframes arrowAnimate {
+  0% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(7px);
+  }
+  50% {
+    transform: translateY(12px);
+  }
+  75% {
+    transform: translateY(7px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.arrow-animate {
+  animation: arrowAnimate .8s 10 linear;
 }

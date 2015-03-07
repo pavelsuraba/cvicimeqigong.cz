@@ -1,13 +1,4 @@
 
-/*@font-face {
-    font-family: "Roboto";
-    src: url('../fonts/Roboto-Light-webfont.eot');
-    src: url('../fonts/Roboto-Light-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/Roboto-Light-webfont.woff') format('woff'),
-         url('../fonts/Roboto-Light-webfont.ttf') format('truetype'),
-         url('../fonts/Roboto-Light-webfont.svg#open_sanslight') format('svg');
-}*/
-
 @font-face {
     font-family: "Fira";
     src: url('../fonts/FiraSans-Light.eot');

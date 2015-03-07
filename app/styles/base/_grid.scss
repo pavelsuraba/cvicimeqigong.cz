@@ -2,78 +2,87 @@
    Grid
    ========================================================================== */
 
-%base-container {
-    max-width: 77.5rem; // 1240px
-    margin: 0 auto;
+$grid-pad: 1rem;
+
+%container {
+  margin: 0 auto;
+  padding: 0 $grid-pad 0 $grid-pad;
 }
 
-// basic container
 .container {
-    @extend %base-container;
-    padding: 0 1.5rem;
+  @extend %container;
+  max-width: 77.5rem; // 1240px
 }
 
-// grid => padding is divided between container and column
-.grid {
-    @extend %base-container;
-    padding: 0 0.75rem;
+.container--text {
+  @extend %container;
+  max-width: 40rem; // 800px
 }
 
-.grid:after {
-    content: "";
-    display: table;
-    clear: both;   
+.container--contact {
+  @extend %container;
+  max-width: 50rem; // 800px
 }
 
-.grid__contact {
-    max-width: 50rem; // 800px
+.row {
+  margin-right: -($grid-pad/2);
+  margin-left: -($grid-pad/2);
 }
 
-%grid__col {
-    padding: 0 0.75rem;
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
-.grid__col--text {
-
-    @extend %grid__col;
-
-    @include bp(35em) { //460px
-        float: left;
-        width: 50%;
-    }
-
-    @include bp(83em) { //1328px
-        width: 33.33%;
-    }
+%column {
+  padding: 0 ($grid-pad/2) 0 ($grid-pad/2);
+  width: 100%; 
 }
 
-.grid__col--contact {
+.col {
 
-    @extend %grid__col;
+  @extend %column;
 
-    text-align: center;
+  @include bp(35em) { //560px
+    float: left;
+    width: 50%;
+  }
 
-    @include bp(35em) { //460px
-        float: left;
-        width: 50%;
-    }
+  @include bp(83em) { //1328px
+    width: 33.33%;
+  }
 }
 
-.grid__col--picture {
+.col--contact {
 
-    @extend %grid__col;
+  @extend %column;
 
-    @include bp(35em) { //460px
-        float: left;
-        width: 50%;
-    }
+  @include bp(35em) { //560px
+    float: left;
+    width: 50%;
+  }
 
-    @include bp(65em) { //1040px
-        width: 33.33%;
-    }
+  @include bp(60em) { //960px
+    width: 33.33%;
+  }
 
-    img {
-        width: 100%;
-        height: auto;        
-    }
 }
+
+.col--picture {
+
+  @include bp(35em) { //560px
+    float: left;
+    width: 50%;
+  }
+
+  @include bp(65em) { //1040px
+    width: 33.33%;
+  }
+
+  img {
+    width: 100%;
+    height: auto;        
+  }
+}
+
